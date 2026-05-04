@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unitron LP Security Procedure Intake Questionnaire</title>
+  <style>
+    :root {
+      --bg: #f6f8fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --border: #d1d5db;
+      --primary: #1f4e79;
+      --primary-dark: #163a59;
+      --danger: #b91c1c;
+      --success: #166534;
+      --warning-bg: #fff7ed;
+      --warning-border: #f97316;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    header {
+      background: var(--primary);
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0 0 8px;
+      font-size: 28px;
+    }
+
+    header p {
+      margin: 0;
+      font-size: 15px;
+      opacity: 0.95;
+    }
+
+    main {
+      max-width: 1150px;
+      margin: 24px auto;
+      padding: 0 18px 60px;
+    }
+
+    .notice {
+      background: #eef6ff;
+      border-left: 5px solid var(--primary);
+      padding: 14px 16px;
+      margin-bottom: 18px;
+      border-radius: 8px;
+      color: #18324a;
+    }
+
+    .warning {
+      background: var(--warning-bg);
+      border-left: 5px solid var(--warning-border);
+      padding: 14px 16px;
+      margin-bottom: 22px;
+      border-radius: 8px;
+      color: #7c2d12;
+    }
+
+    .section {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin-bottom: 22px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    }
+
+    .section h2 {
+      margin: 0;
+      padding: 16px 18px;
+      background: #e9eef5;
+      color: #172554;
+      font-size: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-body {
+      padding: 18px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .hint {
+      display: block;
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 3px;
+      font-weight: normal;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 10px 11px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 14px;
+      background: white;
+    }
+
+    textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: 2px solid #93c5fd;
+      border-color: var(--primary);
+    }
+
+    .required::after {
+      content: " *";
+      color: var(--danger);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+      position: sticky;
+      bottom: 0;
+      background: rgba(246, 248, 251, 0.96);
+      padding: 14px 0;
+      border-top: 1px solid #e5e7eb;
+    }
+
+    button {
+      border: none;
+      border-radius: 8px;
+      padding: 12px 18px;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .primary:hover {
+      background: var(--primary-dark);
+    }
+
+    .secondary {
+      background: #e5e7eb;
+      color: #111827;
+    }
+
+    .danger {
+      background: #fee2e2;
+      color: var(--danger);
+    }
+
+    #status {
+      margin-top: 14px;
+      font-weight: 700;
+    }
+
+    .success {
+      color: var(--success);
+    }
+
+    .error {
+      color: var(--danger);
+    }
+
+    @media (max-width: 760px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      header h1 {
+        font-size: 23px;
+      }
+    }
+
+    @media print {
+      body {
+        background: white;
+      }
+
+      header,
+      .actions,
+      .notice,
+      .warning {
+        display: none;
+      }
+
+      main {
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      .section {
+        break-inside: avoid;
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Unitron LP Security Procedure Intake Questionnaire</h1>
+    <p>Procedure discovery form for building operational, audit-ready security procedures aligned to the SSP and control matrix.</p>
+  </header>
+
+  <main>
+    <div class="notice">
+      Complete this questionnaire before drafting procedures. The goal is to capture the systems in scope, applications in use, responsible parties, tools, workflows, timing, approvals, and evidence retained for each procedure area.
+    </div>
+
+    <div class="warning">
+      Do not include passwords, secrets, API keys, private tokens, or sensitive client data in this form. Describe where items are managed without exposing actual confidential values.
+    </div>
+
+    <form id="procedureForm">
+      <section class="section">
+        <h2>General Information</h2>
+        <div class="section-body grid">
+          <div>
+            <label class="required">Company / Business Unit</label>
+            <input name="companyBusinessUnit" required placeholder="Unitron LP / Department" />
+          </div>
+
+          <div>
+            <label class="required">Primary Point of Contact</label>
+            <input name="primaryPoc" required placeholder="Name, role, email" />
+          </div>
+
+          <div>
+            <label>Procedure Owner / Approver</label>
+            <input name="procedureOwner" placeholder="Name or role" />
+          </div>
+
+          <div>
+            <label>Target Procedure Priority</label>
+            <select name="priority">
+              <option value="">Select one</option>
+              <option>AC-2 Account Management</option>
+              <option>IA Authentication and Credential Management</option>
+              <option>IR-4 Incident Response</option>
+              <option>SI-2 Patch and Vulnerability Management</option>
+              <option>CM-3 Change Management</option>
+              <option>CP-9 / CP-10 Backup and Recovery</option>
+              <option>CA-7 Continuous Monitoring</option>
+              <option>RA-3 Risk Assessment</option>
+              <option>All baseline procedures</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div>
+            <label>Questionnaire Completed By</label>
+            <input name="completedBy" placeholder="Name and role" />
+          </div>
+
+          <div>
+            <label>Date Completed</label>
+            <input type="date" name="dateCompleted" />
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Environment & Systems Overview</h2>
+        <div class="section-body grid">
+          <div>
+            <label class="required">Approximate number of users</label>
+            <select name="userCount" required>
+              <option value="">Select one</option>
+              <option>1-25</option>
+              <option>26-50</option>
+              <option>51-100</option>
+              <option>101-250</option>
+              <option>251-500</option>
+              <option>500+</option>
+              <option>Unknown</option>
+            </select>
+          </div>
+
+          <div>
+            <label>Workforce model</label>
+            <select name="workforceModel">
+              <option value="">Select one</option>
+              <option>Mostly on-site</option>
+              <option>Mostly remote</option>
+              <option>Hybrid</option>
+              <option>Field-based / mobile workforce</option>
+              <option>Mixed environment</option>
+              <option>Unknown</option>
+            </select>
+          </div>
+
+          <div class="full">
+            <label class="required">Core business applications in use</label>
+            <textarea name="coreBusinessApplications" required placeholder="Email, accounting, ERP, CRM, HR, project management, document storage, industry-specific applications"></textarea>
+            <span class="hint">This helps determine account provisioning, monitoring, patching, backup, and incident response scope.</span>
+          </div>
+
+          <div class="full">
+            <label>Cloud platforms and SaaS services in use</label>
+            <textarea name="cloudPlatforms" placeholder="Microsoft 365, Google Workspace, AWS, Azure, Salesforce, QuickBooks, Dropbox, SharePoint, etc."></textarea>
+          </div>
+
+          <div class="full">
+            <label>Security tools currently deployed</label>
+            <textarea name="securityTools" placeholder="Firewall, EDR/AV, SIEM, vulnerability scanner, RMM, MDM, email security, backup platform, password manager"></textarea>
+          </div>
+
+          <div class="full">
+            <label>Identity and access systems in use</label>
+            <textarea name="identityAccessSystems" placeholder="Active Directory, Azure AD / Entra ID, Okta, Google Workspace, local accounts, VPN accounts, shared application accounts"></textarea>
+          </div>
+
+          <div class="full">
+            <label>Ticketing, workflow, or documentation systems</label>
+            <textarea name="ticketingWorkflowSystems" placeholder="ServiceNow, Jira, Autotask, ConnectWise, Freshservice, email approvals, SharePoint, Teams, spreadsheets"></textarea>
+          </div>
+
+          <div class="full">
+            <label>Data storage locations</label>
+            <textarea name="dataStorageLocations" placeholder="File servers, SharePoint, OneDrive, Google Drive, cloud storage, local endpoints, databases, backup repositories"></textarea>
+          </div>
+
+          <div class="full">
+            <label>Types of sensitive or regulated data handled</label>
+            <textarea name="sensitiveDataTypes" placeholder="PII, financial data, client data, contracts, HR data, operational data, credentials, proprietary information"></textarea>
+          </div>
+
+          <div class="full">
+            <label>Critical systems or applications that must be restored first during disruption</label>
+            <textarea name="criticalSystems" placeholder="Email, authentication, file storage, finance systems, client portals, operational systems, backup systems"></textarea>
+          </div>
+
+          <div class="full">
+            <label>Known legacy, unmanaged, or high-risk systems</label>
+            <textarea name="legacyHighRiskSystems" placeholder="Old servers, unsupported OS, unmanaged endpoints, local admin-heavy systems, vendor-managed tools"></textarea>
+          </div>
+
+          <div>
+            <label>Is there an MSP or outsourced IT provider?</label>
+            <select name="mspProvider">
+              <option value="">Select one</option>
+              <option>Yes</option>
+              <option>No</option>
+              <option>Partially</option>
+              <option>Unknown</option>
+            </select>
+          </div>
+
+          <div>
+            <label>Who provides day-to-day IT support?</label>
+            <input name="dayToDayITSupport" placeholder="Internal IT, MSP, hybrid, named team/role" />
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>1. Account Management Procedure — AC-2</h2>
+        <div class="section-body grid">
+          <div>
+            <label class="required">How are new account requests submitted?</label>
+            <select name="accountRequestMethod" required>
+              <option value="">Select one</option>
+              <option>Ticketing system</option>
+              <option>Email request</option>
+              <option>HR onboarding workflow</option>
+              <option>Manual verbal request</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="required">Who approves standard user access?</label>
+            <input name="standardAccessApprover" required placeholder="Manager, system owner, IT, security" />
+          </div>
+
+          <div>
+            <label>Who approves privileged access?</label>
+            <input name="privilegedAccessApprover" placeholder="Security, IT manager, executive, system owner" />
+          </div>
+
+          <div>
+            <label>What identity platform is used?</label>
+            <input name="identityPlatform" placeholder="Active Directory, Azure AD / Entra ID, Okta, Google Workspace, etc." />
+          </div>
+
+          <div class="full">
+            <label>List core systems where accounts are created</label>
+            <textarea name="coreAccountSystems" placeholder="Email, VPN, ERP, file shares, cloud apps, admin consoles"></textarea>
+          </div>
+
+          <div>
+            <label>How quickly are terminated users disabled?</label>
+            <select name="terminationDisableTime">
+              <option value="">Select one</option>
+              <option>Immediately</option>
+              <option>Within 4 hours</option>
+              <option>Same business day</option>
+              <option>Within 24 hours</option>
+              <option>No defined timeframe</option>
+            </select>
+          </div>
+
+          <div>
+            <label>How often are access reviews performed?</label>
+            <select name="accessReviewFrequency">
+              <option value="">Select one</option>
+              <option>Monthly</option>
+              <option>Quarterly</option>
+              <option>Semi-annually</option>
+              <option>Annually</option>
+              <option>Not currently performed</option>
+            </select>
+          </div>
+
+          <div>
+            <label>Are shared accounts used?</label>
+            <select name="sharedAccountsUsed">
+              <option value="">Select one</option>
+              <option>No</option>
+              <option>Yes, but limited</option>
+              <option>Yes, commonly</option>
+              <option>Unknown</option>
+            </select>
+          </div>
+
+          <div>
+            <label>Are admin accounts separate from standard accounts?</label>
+            <select name="separateAdminAccounts">
+              <option value="">Select one</option>
+              <option>Yes</option>
+              <option>No</option>
+              <option>Partially</option>
+              <option>Unknown</option>
+            </select>
+          </div>
+
+          <div class="full">
+            <label>What evidence is retained for access requests, approvals, changes, and removals?</label>
+            <textarea name="accessEvidence" placeholder="Tickets, approval emails, access review worksheets, HR termination notices, system logs"></textarea>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>2. Authentication and Credential Management — IA-2 / IA-5</h2>
+        <div class="section-body grid">
+          <div>
+            <label>What MFA solution is used?</label>
+            <input name="mfaSolution" placeholder="Duo, Microsoft Authenticator, Okta Verify, Google MFA" />
+          </div>
+
+          <div>
+            <label>Where is MFA enforced?</label>
+            <select name="mfaScope">
+              <option value="">Select one</option>
+              <option>All users</option>
+              <option>Remote access only</option>
+              <option>Privileged users only</option>
+              <option>Selected applications only</option>
+              <option>Not currently enforced</option>
+            </select>
+          </div>
+
+          <div>
+            <label>Are password requirements technically enforced?</label>
+            <select name="passwordPolicyEnforced">
+              <option value="">Select one</option>
+              <option>Yes</option>
+              <option>No</option>
+              <option>Partially</option>
+              <option>Unknown</option>
+            </select>
+          </div>
+
+          <div>
+            <label>Is a password manager or vault used?</label>
+            <input name="passwordVault" placeholder="1Password, Keeper, Bitwarden, LastPass, PAM, none" />
+          </div>
+
+          <div class="full">
+            <label>How are password resets requested, approved, and verified?</label>
+            <textarea name="passwordResetProcess"></textarea>
+          </div>
+
+          <div>
+            <label>Are service accounts used?</label>
+            <select name="serviceAccountsUsed">
+              <option value="">Select one</option>
+              <option>Yes</option>
+              <option>No</option>
+              <option>Unknown</option>
+            </select>
+          </div>
+
+          <div>
+            <label>How are service account credentials stored?</label>
+            <input name="serviceCredentialStorage" placeholder="Password vault, PAM, encrypted file, unknown" />
+          </div>
+
+          <div class="full">
+            <label>What evidence proves MFA, password policy, or credential controls are enforced?</label>
+            <textarea name="authEvidence" placeholder="MFA reports, password policy screenshots, IdP configuration exports, reset tickets"></textarea>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>3. Incident Response Procedure — IR-4 / IR-6 / IR-3</h2>
+        <div class="section-body grid">
+          <div>
+            <label>Who is the first responder for security incidents?</label>
+            <input name="incidentFirstResponder" placeholder="IT, security, MSP, help desk" />
+          </div>
+
+          <div>
+            <label>Who has escalation authority?</label>
+            <input name="incidentEscalationAuthority" placeholder="Security lead, executive, legal, operations" />
+          </div>
+
+          <div>
+            <label>What system is used to document incidents?</label>
+            <input name="incidentTrackingSystem" placeholder="Ticketing system, spreadsheet, SIEM case, email" />
+          </div>
+
+          <div>
+            <label>Is there a severity scale?</label>
+            <select name="incidentSeverityScale">
+              <option value="">Select one</option>
+              <option>Yes - documented</option>
+              <option>Yes - informal</option>
+              <option>No</option>
+              <option>Unknown</option>
+            </select>
+          </div>
+
+          <div class="full">
+            <label>What events must be reported immediately?</label>
+            <textarea name="reportableEvents" placeholder="Credential compromise, malware, ransomware, data exposure, unauthorized access"></textarea>
+          </div>
+
+          <div>
+            <label>Are tabletop exercises performed?</label>
+            <select name="tabletopExercises">
+              <option value="">Select one</option>
+              <option>Quarterly</option>
+              <option>Semi-annually</option>
+              <option>Annually</option>
+              <option>Not currently performed</option>
+            </select>
+          </div>
+
+          <div>
+            <label>Who receives post-incident reports?</label>
+            <input name="postIncidentReportRecipients" placeholder="Leadership, security, legal, customer, regulator" />
+          </div>
+
+          <div class="full">
+            <label>What evidence is retained for incidents?</label>
+            <textarea name="incidentEvidence" placeholder="Incident tickets, timelines, screenshots, logs, investigation notes, lessons learned"></textarea>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>4. Patch and Vulnerability Management Procedure — SI-2 / RA-5</h2>
+        <div class="section-body grid">
+          <div>
+            <label>What vulnerability scanning tool is used?</label>
+            <input name="vulnerabilityTool" placeholder="Tenable, Qualys, Defender, Nessus, Rapid7, none" />
+          </div>
+
+          <div>
+            <label>How often are scans performed?</label>
+            <select name="scanFrequency">
+              <option value="">Select one</option>
+              <option>Continuous</option>
+              <option>Weekly</option>
+              <option>Monthly</option>
+              <option>Quarterly</option>
+              <option>Ad hoc only</option>
+              <option>Not currently performed</option>
+            </select>
+          </div>
+
+          <div>
+            <label>What patch management tool is used?</label>
+            <input name="patchTool" placeholder="Intune, WSUS, SCCM, RMM, manual, other" />
+          </div>
+
+          <div>
+            <label>Who approves emergency patches?</label>
+            <input name="emergencyPatchApprover" placeholder="IT manager, security, system owner" />
+          </div>
+
+          <div class="full">
+            <label>What are remediation timelines for Critical, High, Medium, and Low findings?</label>
+            <textarea name="remediationTimelines" placeholder="Critical: X days; High: X days; Medium: X days; Low: X days"></textarea>
+          </div>
+
+          <div class="full">
+            <label>What evidence is retained for scanning, patching, and remediation?</label>
+            <textarea name="patchEvidence" placeholder="Scan reports, patch reports, tickets, exception approvals, screenshots"></textarea>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>5. Change Management Procedure — CM-3</h2>
+        <div class="section-body grid">
+          <div>
+            <label>How are changes requested?</label>
+            <select name="changeRequestMethod">
+              <option value="">Select one</option>
+              <option>Ticketing system</option>
+              <option>Email</option>
+              <option>Change board</option>
+              <option>Informal request</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div>
+            <label>Who approves normal changes?</label>
+            <input name="normalChangeApprover" />
+          </div>
+
+          <div>
+            <label>Is security impact reviewed before changes?</label>
+            <select name="securityImpactReview">
+              <option value="">Select one</option>
+              <option>Yes, for all changes</option>
+              <option>Yes, for high-risk changes only</option>
+              <option>No</option>
+              <option>Unknown</option>
+            </select>
+          </div>
+
+          <div>
+            <label>Are rollback plans required?</label>
+            <select name="rollbackRequired">
+              <option value="">Select one</option>
+              <option>Yes, for all changes</option>
+              <option>Yes, for high-risk changes</option>
+              <option>No</option>
+              <option>Unknown</option>
+            </select>
+          </div>
+
+          <div>
+            <label>Are emergency changes reviewed after implementation?</label>
+            <select name="emergencyReview">
+              <option value="">Select one</option>
+              <option>Yes</option>
+              <option>No</option>
+              <option>Unknown</option>
+            </select>
+          </div>
+
+          <div class="full">
+            <label>What evidence is retained for changes?</label>
+            <textarea name="changeEvidence" placeholder="Change tickets, approvals, testing results, rollback plans, implementation notes"></textarea>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>6. Continuous Monitoring Procedure — CA-7 / SI-4</h2>
+        <div class="section-body grid">
+          <div>
+            <label>What monitoring/logging tools are used?</label>
+            <input name="monitoringTools" placeholder="SIEM, EDR, firewall logs, cloud logs, RMM" />
+          </div>
+
+          <div>
+            <label>Who reviews alerts?</label>
+            <input name="alertReviewer" placeholder="Security, IT, MSP, SOC" />
+          </div>
+
+          <div class="full">
+            <label>What events trigger alerts or escalation?</label>
+            <textarea name="alertTriggers" placeholder="Failed logins, privilege escalation, malware alerts, abnormal traffic, data exfiltration"></textarea>
+          </div>
+
+          <div>
+            <label>How often are logs reviewed?</label>
+            <select name="logReviewFrequency">
+              <option value="">Select one</option>
+              <option>Real-time</option>
+              <option>Daily</option>
+              <option>Weekly</option>
+              <option>Monthly</option>
+              <option>Only during incidents</option>
+            </select>
+          </div>
+
+          <div>
+            <label>How long are logs retained?</label>
+            <input name="logRetention" placeholder="30 days, 90 days, 1 year, etc." />
+          </div>
+
+          <div class="full">
+            <label>Where is monitoring evidence stored?</label>
+            <textarea name="monitoringEvidenceLocation" placeholder="SIEM, ticketing system, SOC reports, shared drive, security dashboard"></textarea>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>7. Backup and Recovery Procedure — CP-9 / CP-10</h2>
+        <div class="section-body grid">
+          <div>
+            <label>What backup solution is used?</label>
+            <input name="backupSolution" />
+          </div>
+
+          <div>
+            <label>Where are backups stored?</label>
+            <input name="backupLocation" placeholder="Cloud, offsite, immutable storage, local NAS" />
+          </div>
+
+          <div>
+            <label>How often are backups performed?</label>
+            <input name="backupFrequency" placeholder="Daily, hourly, weekly" />
+          </div>
+
+          <div>
+            <label>How often are restores tested?</label>
+            <select name="restoreTestFrequency">
+              <option value="">Select one</option>
+              <option>Monthly</option>
+              <option>Quarterly</option>
+              <option>Semi-annually</option>
+              <option>Annually</option>
+              <option>Not currently tested</option>
+            </select>
+          </div>
+
+          <div>
+            <label>Defined RTO</label>
+            <input name="rto" placeholder="Example: 4 hours" />
+          </div>
+
+          <div>
+            <label>Defined RPO</label>
+            <input name="rpo" placeholder="Example: 24 hours" />
+          </div>
+
+          <div class="full">
+            <label>What evidence is retained for backup and recovery?</label>
+            <textarea name="backupEvidence" placeholder="Backup logs, restore test records, screenshots, failure alerts"></textarea>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>8. Risk, Third-Party, and Training</h2>
+        <div class="section-body grid">
+          <div>
+            <label>Is there a risk register?</label>
+            <select name="riskRegister">
+              <option value="">Select one</option>
+              <option>Yes</option>
+              <option>No</option>
+              <option>In development</option>
+            </select>
+          </div>
+
+          <div>
+            <label>Who approves risk acceptance?</label>
+            <input name="riskAcceptanceApprover" />
+          </div>
+
+          <div>
+            <label>How are vendors reviewed before access?</label>
+            <input name="vendorReviewMethod" placeholder="Security questionnaire, contract review, management approval" />
+          </div>
+
+          <div>
+            <label>How often is security training performed?</label>
+            <select name="trainingFrequency">
+              <option value="">Select one</option>
+              <option>Onboarding only</option>
+              <option>Annually</option>
+              <option>Semi-annually</option>
+              <option>Quarterly</option>
+              <option>Not currently performed</option>
+            </select>
+          </div>
+
+          <div>
+            <label>Where is training tracked?</label>
+            <input name="trainingTrackingSystem" placeholder="LMS, HR system, spreadsheet, email records" />
+          </div>
+
+          <div>
+            <label>Who approves vendor access?</label>
+            <input name="vendorAccessApprover" placeholder="System owner, IT, security, management" />
+          </div>
+
+          <div class="full">
+            <label>What documentation or evidence is retained for risk, vendor, and training activities?</label>
+            <textarea name="governanceEvidence" placeholder="Risk register, vendor reviews, training completion reports, approvals"></textarea>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Procedure Build Notes</h2>
+        <div class="section-body grid">
+          <div class="full">
+            <label>Known gaps or items that need to be designed from scratch</label>
+            <textarea name="knownGaps" placeholder="Example: No formal access review process; no patch SLA; no documented IR escalation path"></textarea>
+          </div>
+
+          <div class="full">
+            <label>Additional comments</label>
+            <textarea name="additionalComments"></textarea>
+          </div>
+        </div>
+      </section>
+
+      <div class="actions">
+        <button type="button" class="primary" onclick="validateAndExport('json')">Export JSON</button>
+        <button type="button" class="primary" onclick="validateAndExport('csv')">Export CSV</button>
+        <button type="button" class="secondary" onclick="copySummary()">Copy Summary</button>
+        <button type="button" class="secondary" onclick="window.print()">Print / Save PDF</button>
+        <button type="reset" class="danger">Clear Form</button>
+      </div>
+
+      <div id="status"></div>
+    </form>
+  </main>
+
+  <script>
+    function getFormData() {
+      const form = document.getElementById('procedureForm');
+      const data = {};
+
+      new FormData(form).forEach((value, key) => {
+        data[key] = value.trim();
+      });
+
+      data.exportedAt = new Date().toISOString();
+      return data;
+    }
+
+    function validateRequired() {
+      const form = document.getElementById('procedureForm');
+      const status = document.getElementById('status');
+
+      if (!form.checkValidity()) {
+        status.className = 'error';
+        status.textContent = 'Please complete all required fields before exporting.';
+        form.reportValidity();
+        return false;
+      }
+
+      status.textContent = '';
+      return true;
+    }
+
+    function downloadFile(filename, content, mimeType) {
+      const blob = new Blob([content], { type: mimeType });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+
+      const status = document.getElementById('status');
+      status.className = 'success';
+      status.textContent = filename + ' downloaded successfully.';
+    }
+
+    function validateAndExport(type) {
+      if (!validateRequired()) return;
+
+      const data = getFormData();
+      const date = new Date().toISOString().slice(0, 10);
+
+      if (type === 'json') {
+        downloadFile(
+          'unitron-procedure-questionnaire-' + date + '.json',
+          JSON.stringify(data, null, 2),
+          'application/json'
+        );
+      }
+
+      if (type === 'csv') {
+        const headers = Object.keys(data);
+        const values = headers.map(key => '"' + String(data[key]).replace(/"/g, '""') + '"');
+        downloadFile(
+          'unitron-procedure-questionnaire-' + date + '.csv',
+          headers.join(',') + '\n' + values.join(','),
+          'text/csv'
+        );
+      }
+    }
+
+    function copySummary() {
+      if (!validateRequired()) return;
+
+      const data = getFormData();
+      const summary = Object.entries(data)
+        .map(([key, value]) => key + ': ' + (value || 'N/A'))
+        .join('\n');
+
+      navigator.clipboard.writeText(summary).then(() => {
+        const status = document.getElementById('status');
+        status.className = 'success';
+        status.textContent = 'Summary copied to clipboard.';
+      }).catch(() => {
+        const status = document.getElementById('status');
+        status.className = 'error';
+        status.textContent = 'Unable to copy summary. Use Export JSON or CSV instead.';
+      });
+    }
+  </script>
+</body>
+</html>
